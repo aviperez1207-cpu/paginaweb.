@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Repuestos y Accesorios para Bicicletas | Tienda Especializada</title>
+
+    <!-- NUEVA FUENTE TIPOGRÁFICA DEPORTIVA (MONTSERRAT) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- ESTILO COMPLETAMENTE NUEVO (TEMA ORANGE SPORT / URBAN MTB) -->
+    <style>
+        :root {
+            --primary: #ff5722;          /* Naranja Deportivo Neón */
+            --primary-hover: #e64a19;    /* Naranja más oscuro para botones */
+            --dark-asphalt: #18191c;     /* Gris Asfalto / Chasis */
+            --light-bg: #f3f4f6;         /* Gris claro industrial */
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-radius: 12px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           ENCABEZADO / NAVEGACIÓN
+        ========================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            background: rgba(24, 25, 28, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "⚙️";
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================
+           HERO (BANNER PRINCIPAL)
+        ========================================== */
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(24, 25, 28, 0.9) 0%, rgba(24, 25, 28, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            color: #ffffff;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2.2rem;
+            color: #d1d5db;
+            font-weight: 400;
+        }
+
+        .hero-text button {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 1.1rem 3rem;
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 87, 34, 0.4);
+            transition: var(--transition);
+        }
+
+        .hero-text button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 87, 34, 0.6);
+        }
+
+        /* ==========================================
+           SECCIONES GENERALES
+        ========================================== */
+        .section {
+            padding: 5rem 8%;
+        }
+
+        .section.fondo {
+            background-color: var(--light-bg);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark-asphalt);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 3px;
+        }
+
+        .texto-centro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ==========================================
+           TARJETAS DE SERVICIOS
+        ========================================== */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            border-top: 4px solid var(--dark-asphalt);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--dark-asphalt);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .card button {
+            background-color: var(--dark-asphalt);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+
+        .card button:hover {
+            background-color: var(--primary);
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.3);
+        }
+
+        /* ==========================================
+           GALERÍA
+        ========================================== */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: var(--transition);
+            filter: grayscale(15%);
+        }
+
+        .galeria img:hover {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        /* ==========================================
+           CALCULADORA
+        ========================================== */
+        .calculadora {
+            max-width: 420px;
+            margin: 0 auto;
+            background: var(--dark-asphalt);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            border: 2px solid #2d3139;
+        }
+
+        .calculadora input {
+            width: 100%;
+            padding: 1rem;
+            background: #25282e;
+            border: 1px solid #3d424d;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .calculadora input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.25);
+        }
+
+        .botones-calculadora {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+        }
+
+        .botones-calculadora button {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 1rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .botones-calculadora button:hover {
+            background: #ffffff;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-top: 0.5rem;
+            padding: 1rem;
+            background-color: #25282e;
+            border-radius: 8px;
+            font-weight: 700;
+            border: 1px dashed var(--primary);
+        }
+
+        /* ==========================================
+           FORMULARIO DE CONTACTO
+        ========================================== */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: var(--transition);
+            outline: none;
+            background-color: var(--light-bg);
+        }
+
+        form input:focus,
+        form textarea:focus {
+            background-color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.15);
+        }
+
+        form textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        form button[type="submit"] {
+            background: var(--dark-asphalt);
+            color: #ffffff;
+            border: none;
+            padding: 1.1rem;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        form button[type="submit"]:hover {
+            background: var(--primary);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        /* ==========================================
+           PIE DE PÁGINA
+        ========================================== */
+        footer {
+            background-color: var(--dark-asphalt);
+            color: #9ca3af;
+            text-align: center;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 5%;
+            }
+
+            nav {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.1rem;
+            }
+
+            .section {
+                padding: 3.5rem 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">
+            BiciRepuestos
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section id="inicio" class="hero" style="background-image: url('https://cdn.brujulabike.com/uploads/images/emtb_bicicleta_electrina_montana.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="hero-text">
+            <h1>Especialistas en Repuestos y Mantenimiento de Bicicletas</h1>
+            <p>Encuentra las mejores piezas, componentes Shimano y herramientas para mantener tu bicicleta en perfectas condiciones.</p>
+            <button onclick="mostrarMensaje()">Conocer más</button>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section id="nosotros" class="section">
+        <h2>Sobre Nosotros</h2>
+        <p class="texto-centro">
+            Somos apasionados del ciclismo. Ofrecemos repuestos de alta calidad, asesoría técnica y componentes originales para todo tipo de bicicletas.
+        </p>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section fondo">
+        <h2>Servicios</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Venta de Repuestos</h3>
+                <p>Componentes originales y repuestos Shimano para transmisiones, frenos y más.</p>
+                <button onclick="mostrarServicio('Venta de Repuestos')">Ver más</button>
+            </div>
+
+            <div class="card">
+                <h3>Mantenimiento General</h3>
+                <p>Ajustes de transmisión, lubricación, centrado de ruedas y puesta a punto.</p>
+                <button onclick="mostrarServicio('Mantenimiento General')">Ver más</button>
+            </div>
+
+            <div class="card">
+                <h3>Instalación y Ajustes</h3>
+                <p>Instalación profesional de accesorios y actualización de componentes.</p>
+                <button onclick="mostrarServicio('Instalación y Ajustes')">Ver más</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section id="galeria" class="section">
+        <h2>Galería de Productos</h2>
+
+        <div class="galeria">
+            <img src="https://i.pinimg.com/originals/e4/2b/a9/e42ba94613f78040b6009c20b72d5bea.jpg" alt="Accesorios y Repuestos de Bicicleta" onclick="ampliarImagen(this)">
+            <img src="https://tiendadbicis.com/wp-content/uploads/2023/10/repuestos-shimano.jpg" alt="Repuestos Shimano para Bicicletas" onclick="ampliarImagen(this)">
+            <img src="https://www.bttbike.com/foto/o/12/05/1205370784_bicicletas_020.jpg" alt="Componentes y Bicicletas" onclick="ampliarImagen(this)">
+        </div>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section class="section fondo">
+        <h2>Calculadora</h2>
+
+        <div class="calculadora">
+            <input type="number" id="numero1" placeholder="Número 1">
+            <input type="number" id="numero2" placeholder="Número 2">
+
+            <div class="botones-calculadora">
+                <button onclick="sumar()">+</button>
+                <button onclick="restar()">-</button>
+                <button onclick="multiplicar()">×</button>
+                <button onclick="dividir()">÷</button>
+            </div>
+
+            <h3 id="resultado">Resultado: 0</h3>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+        <h2>Contacto</h2>
+
+        <form onsubmit="enviarFormulario(event)">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="email" id="correo" placeholder="Correo electrónico" required>
+            <textarea id="mensaje" placeholder="Escribe tu mensaje o consulta sobre repuestos" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>© 2026 BiciRepuestos - Tienda y Taller de Bicicletas</p>
+        <p>Página creada con HTML, CSS y JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
